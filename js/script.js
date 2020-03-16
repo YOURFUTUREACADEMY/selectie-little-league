@@ -23,8 +23,6 @@ $(document).ready(function() {
     $('input[id="temp"]').attr("id", naam + rij);
     $('label[for="temp1"]').attr("for", achternaam + rij);
     $('input[id="temp1"]').attr("id", achternaam + rij);
-    $("button[]");
-
     rij++;
   }
 
