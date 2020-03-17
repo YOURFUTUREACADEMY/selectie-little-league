@@ -1,0 +1,8 @@
+[type="date"] {
+  min-width: 2.5rem;
+  max-width: 8rem;
+}
+
+[id^="postcod"] {
+  max-width: 4rem;
+}
