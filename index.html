@@ -59,67 +59,15 @@
       <form name="coordinator" class="border border-warning mb-1">
         <div class="form-group">
           <h2 class="text-center">Coördinator informatie</h2>
-        </div>
-      </form>
-      <!--coach form-->
-      <form name="coach" class="border border-primary mb-1">
-        <div class="form-group">
-          <h2 class="text-center">coach selectie</h2>
-          <h5 class="text-center">Hoofdcoach</h5>
           <div class="d-flex flex-column flex-lg-row">
-            <label class="m-1" for="coachnaam">Voornaam</label>
-            <input class="m-1" type="text" id="coachnaam" required />
-            <label class="m-1" for="coachachternaam">Achternaam</label>
-            <input class="m-1" type="text" id="coachachternaam" required />
-            <label class="m-1" for="coachadres">Adres</label>
-            <input
-              class="m-1"
-              type="text"
-              id="coachadres"
-              placeholder="straat 1"
-              required
-            />
-            <label class="m-1" for="coachpostcode">Postcode</label>
-            <input
-              class="m-1"
-              type="text"
-              id="coachpostcode"
-              maxlength="6"
-              minlength="6"
-              width="1rem"
-              required
-            />
+            <label class="m-1" for="teamNaam">Team naam</label>
+            <input class="m-1" id="teamNaam" type="text" required />
+            <label class="m-1" for="cluster">Cluster</label>
+            <input class="m-1" id="cluster" type="text" required />
+            <label class="m-1" for="teamCoordinator">Teamcoördinator</label>
+            <input class="m-1" id="teamCoordinator" type="text" required />
           </div>
           <div class="d-flex flex-column flex-lg-row">
-            <label class="m-1" for="coachemail">Email</label>
-            <input class="m-1" type="coachemail" id="email" required />
-            <label class="m-1" for="coachplaats">Plaats</label>
-            <input class="m-1" type="coachtext" id="plaats" required />
-            <label class="m-1" for="coachgeboortedatum">Geboortedatum</label>
-            <input
-              class="m-1"
-              type="date"
-              id="coachgeboortedatum"
-              size="6"
-              required
-            />
-            <label class="m-1" for="coachvereniging">Vereniging</label>
-            <input class="m-1" type="text" id="coachvereniging" required />
-            <button class="coachok btn btn-primary">O</button>
-          </div>
-          <h5 class="text-center">Coaches</h5>
-        </div>
-      </form>
-
-      <!--team form-->
-      <form name="team" class="border border-danger">
-        <div class="form-group">
-          <h2 class="text-center">team selectie</h2>
-          <div class="d-flex flex-column flex-lg-row">
-            <label class="m-1" for="naam">Voornaam</label>
-            <input class="m-1" type="text" id="naam" required />
-            <label class="m-1" for="achternaam">Achternaam</label>
-            <input class="m-1" type="text" id="achternaam" required />
             <label class="m-1" for="adres">Adres</label>
             <input
               class="m-1"
@@ -138,28 +86,139 @@
               width="1rem"
               required
             />
-          </div>
-          <div class="d-flex flex-column flex-lg-row">
-            <label class="m-1" for="email">Email</label>
-            <input class="m-1" type="email" id="email" required />
             <label class="m-1" for="plaats">Plaats</label>
             <input class="m-1" type="text" id="plaats" required />
-            <label class="m-1" for="geboortedatum">Geboortedatum</label>
+          </div>
+          <div class="d-flex flex-column flex-lg-row">
+            <label class="m-1" for="telefoon">Telefoonnummer</label>
+            <input class="m-1" id="telefoon" required />
+            <label class="m-1" for="sport">Sport</label>
+            <select class="m-1" id="sport" required>
+              <option value="">--type sport--</option>
+              <option value="Baseball">Baseball</option>
+              <option value="Softball">Softball</option>
+            </select>
+            <label class="m-1" for="klasse">Klasse</label>
+            <select class="m-1" id="klasse" required>
+              <option value="">--klasse--</option>
+              <option value="Little League">Little League</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Junior">Junior</option>
+              <option value="Senior">Senior</option>
+            </select>
+            <label class="m-1" for="datum">datum</label>
+            <input class="m-1" id="datum" required />
+          </div>
+        </div>
+      </form>
+      <!--coach form-->
+      <form name="coach" class="border border-primary mb-1"> 
+        <div class="form-group">
+          <h2 class="text-center">coach selectie</h2>
+          <h5 class="text-center">Hoofdcoach</h5>
+          <div class="d-flex flex-column flex-lg-row">
+            <label class="m-1" for="coachnaam">Voornaam</label>
+            <input class="m-1" type="text" id="coachnaam" required />
+            <label class="m-1" for="coachachternaam">Achternaam</label>
+            <input class="m-1" type="text" id="coachachternaam" required />
+            <label class="m-1" for="coachadres">Adres</label>
+            <input
+              class="m-1"
+              type="text"
+              id="coachadres"
+              placeholder="straat 1"
+              required
+            />
+          </div>
+          <div class="d-flex flex-column flex-lg-row">
+          <label class="m-1" for="coachpostcode">Postcode</label>
+          <input
+            class="m-1"
+            type="text"
+            id="coachpostcode"
+            maxlength="6"
+            minlength="6"
+            width="1rem"
+            required
+          />
+
+          
+            <label class="m-1" for="coachemail">Email</label>
+            <input class="m-1" type="email" id="coachemail" required />
+            <label class="m-1" for="coachplaats">Plaats</label>
+            <input class="m-1" type="text" id="coachplaats" required />
+          </div>
+          <div class="d-flex flex-column flex-lg-row">
+            <label class="m-1" for="coachgeboortedatum">Geboortedatum</label>
             <input
               class="m-1"
               type="date"
-              id="geboortedatum"
+              id="coachgeboortedatum"
               size="6"
               required
             />
-            <label class="m-1" for="vereniging">Vereniging</label>
-            <input class="m-1" type="text" id="vereniging" required />
+            <label class="m-1" for="coachvereniging">Vereniging</label>
+            <input class="m-1" type="text" id="coachvereniging" required />
+            <button class="coachok btn btn-primary">O</button>
+          </div>
+          <h5 class="text-center">Coaches</h5>
+        </div>
+      </form>
+
+      <!--team form-->
+      <form name="team" class="border border-danger>
+        <div class="form-group">
+          <h2 class="text-center">team selectie</h2>
+          <div class="d-flex flex-column flex-lg-row">
+            <label class="m-1" for="teamnaam">Voornaam</label>
+            <input class="m-1" type="text" id="teamnaam" required />
+            <label class="m-1" for="teamachternaam">Achternaam</label>
+            <input class="m-1" type="text" id="teamachternaam" required />
+            <label class="m-1" for="teamadres">Adres</label>
+            <input
+              class="m-1"
+              type="text"
+              id="teamadres"
+              placeholder="straat 1"
+              required
+            />
+          </div>
+          <div class="d-flex flex-column flex-lg-row">
+            <label class="m-1" for="teampostcode">Postcode</label>
+            <input
+              class="m-1"
+              type="text"
+              id="teampostcode"
+              maxlength="6"
+              minlength="6"
+              width="1rem"
+              required
+            />
+          
+            <label class="m-1" for="teamemail">Email</label>
+            <input class="m-1" type="email" id="teamemail" required />
+            <label class="m-1" for="teamplaats">Plaats</label>
+            <input class="m-1" type="text" id="teamplaats" required />
+          </div>
+            
+          <div class="d-flex flex-column flex-lg-row">
+            <label class="m-1" for="teamgeboortedatum">Geboortedatum</label>
+            <input
+              class="m-1"
+              type="date"
+              id="teamgeboortedatum"
+              size="6"
+              required
+            />
+            <label class="m-1" for="teamvereniging">Vereniging</label>
+            <input class="m-1" type="text" id="teamvereniging" required />
             <button class="ok btn btn-primary">O</button>
+          </div>
           </div>
         </div>
       </form>
       <div class="text-center my-2">
-        <button class="btn">verstuur</button>
+        <button class="btn btn-primary" type="submit" formmethod="POST" formaction="mailto:mailto:friso@yourfutureacademy.nl">verstuur</button>
       </div>
     </div>
 

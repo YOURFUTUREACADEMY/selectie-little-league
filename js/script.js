@@ -19,14 +19,16 @@ $(document).ready(function() {
     '<input class="m-1" type="text" id="temp1" required/>' +
     '<label class="m-1" for="temp2">Adres</label>' +
     '<input class="m-1" type="text" id="temp2" placeholder="straat 1" required />' +
-    '<label class="m-1" for="temp3">Postcode</label>' +
-    '<input class="m-1" type="text" id="temp3" maxlength="6" minlength="6" width="1rem" required/>' +
     "</div>" +
     '<div class="d-flex flex-column flex-lg-row rij">' +
+    '<label class="m-1" for="temp3">Postcode</label>' +
+    '<input class="m-1" type="text" id="temp3" maxlength="6" minlength="6" width="1rem" required/>' +
     '<label class="m-1" for="temp4">Email</label>' +
     '<input class="m-1" type="email" id="temp4" required />' +
     '<label class="m-1" for="temp5">Plaats</label>' +
     '<input class="m-1" type="text" id="temp5" required />' +
+    "</div>" +
+    '<div class="d-flex flex-column flex-lg-row rij">' +
     '<label class="m-1" for="temp6">geboortedatum</label>' +
     '<input class="m-1" type="date" id="temp6" required />' +
     '<label class="m-1" for="temp7">vereniging</label>' +
@@ -38,6 +40,16 @@ $(document).ready(function() {
   let teamRij = 1;
   let coachRij = 1;
 
+  //huidige datum
+  let datum = new Date();
+  let locDatum =
+    datum.getUTCDate() +
+    "/" +
+    (datum.getUTCMonth() + 1) +
+    "/" +
+    datum.getUTCFullYear();
+  $("#datum").val(locDatum);
+
   // event handlers
   $("form").on("submit", false);
   $(".coachok, .ok").on("click", function(e) {
@@ -45,7 +57,7 @@ $(document).ready(function() {
     addRow(className);
   });
 
-  $(document.body).on("click", ".Del, .coachDel", function(e) {
+  $(document.body).on("click", ".teamDel, .coachDel", function(e) {
     let className = this.className;
     removeRow(className);
   });
@@ -53,12 +65,12 @@ $(document).ready(function() {
   // voeg een nieuwe rij velden aan.
   function addRow(className) {
     let counter = 0;
-    let coach = "";
+    let type = "";
     let css = "";
 
     if (className === "ok btn btn-primary") {
       counter = teamRij;
-      coach = "";
+      type = "team";
       if (counter === 15) {
         alert("Er mogen maximaal 15 teamleden worden toegevoegd");
         return;
@@ -67,7 +79,7 @@ $(document).ready(function() {
       }
     } else {
       counter = coachRij;
-      coach = "coach";
+      type = "coach";
       if (counter === 3) {
         alert("Er mogen maximaal 3 coaches worden toegevoegd");
         return;
@@ -83,59 +95,59 @@ $(document).ready(function() {
 
     //hernoem elementen
     $('div[class="d-flex flex-column flex-lg-row rij"]')
-      .attr("class", `d-flex flex-column flex-lg-row ${coach}rij${counter}`)
+      .attr("class", `d-flex flex-column flex-lg-row ${type}rij${counter}`)
       .css("background-color", css);
     $('label[for="temp"]')
-      .attr("for", coach + naam + counter)
+      .attr("for", type + naam + counter)
       .css("background-color", css);
     $('input[id="temp"]')
-      .attr("id", coach + naam + counter)
+      .attr("id", type + naam + counter)
       .css("background-color", css);
     $('label[for="temp1"]')
-      .attr("for", coach + achternaam + counter)
+      .attr("for", type + achternaam + counter)
       .css("background-color", css);
     $('input[id="temp1"]')
-      .attr("id", coach + achternaam + counter)
+      .attr("id", type + achternaam + counter)
       .css("background-color", css);
     $('label[for="temp2"]')
-      .attr("for", coach + adres + counter)
+      .attr("for", type + adres + counter)
       .css("background-color", css);
     $('input[id="temp2"]')
-      .attr("id", coach + adres + counter)
+      .attr("id", type + adres + counter)
       .css("background-color", css);
     $('label[for="temp3"]')
-      .attr("for", coach + postcode + counter)
+      .attr("for", type + postcode + counter)
       .css("background-color", css);
     $('input[id="temp3"]')
-      .attr("id", coach + postcode + counter)
+      .attr("id", type + postcode + counter)
       .css("background-color", css);
     $('label[for="temp4"]')
-      .attr("for", coach + email + counter)
+      .attr("for", type + email + counter)
       .css("background-color", css);
     $('input[id="temp4"]')
-      .attr("id", coach + email + counter)
+      .attr("id", type + email + counter)
       .css("background-color", css);
     $('label[for="temp5"]')
-      .attr("for", coach + plaats + counter)
+      .attr("for", type + plaats + counter)
       .css("background-color", css);
     $('input[id="temp5"]')
-      .attr("id", coach + plaats + counter)
+      .attr("id", type + plaats + counter)
       .css("background-color", css);
     $('label[for="temp6"]')
-      .attr("for", coach + geboortedatum + counter)
+      .attr("for", type + geboortedatum + counter)
       .css("background-color", css);
     $('input[id="temp6"]')
-      .attr("id", coach + geboortedatum + counter)
+      .attr("id", type + geboortedatum + counter)
       .css("background-color", css);
     $('label[for="temp7"]')
-      .attr("for", coach + vereniging + counter)
+      .attr("for", type + vereniging + counter)
       .css("background-color", css);
     $('input[id="temp7"]')
-      .attr("id", coach + vereniging + counter)
+      .attr("id", type + vereniging + counter)
       .css("background-color", css);
     $('button[class="tempDel btn"]').attr(
       "class",
-      coach + "Del btn btn-primary"
+      type + "Del btn btn-primary"
     );
 
     counter++;
@@ -148,8 +160,8 @@ $(document).ready(function() {
 
   // verwijder onderste rij van team of coach velden.
   function removeRow(className) {
-    if (className === "Del btn btn-primary") {
-      $(".rij" + (teamRij - 1)).remove();
+    if (className === "teamDel btn btn-primary") {
+      $(".teamrij" + (teamRij - 1)).remove();
       teamRij--;
     } else {
       $(".coachrij" + (coachRij - 1)).remove();
