@@ -46,21 +46,21 @@
       </header>
       <div class="text-center">
         <p>
-          Welkom bij de selectie website.
-        </p>
-        <p>
-          Gebruik de <button class="btn voorbeeld">O</button> knop om een nieuwe
-          rij toe te voegen.
-        </p>
-        <p>
-          Gebruik de <button class="btn voorbeeld">X</button> knop om de
-          onderste rij te verwijderen.
+          Welkom bij de selectie website.<br />
+          Gebruik de <button class="btn btn-primary voorbeeld">O</button> knop
+          om een nieuwe rij toe te voegen.<br />
+          Gebruik de <button class="btn btn-primary voorbeeld">X</button> knop
+          om de onderste rij in een selectie te verwijderen.
         </p>
       </div>
       <!--forms start-->
 
       <!--coordinator form-->
-
+      <form name="coordinator" class="border border-warning mb-1">
+        <div class="form-group">
+          <h2 class="text-center">Coördinator informatie</h2>
+        </div>
+      </form>
       <!--coach form-->
       <form name="coach" class="border border-primary mb-1">
         <div class="form-group">
@@ -105,7 +105,7 @@
             />
             <label class="m-1" for="coachvereniging">Vereniging</label>
             <input class="m-1" type="text" id="coachvereniging" required />
-            <button class="coachok btn">O</button>
+            <button class="coachok btn btn-primary">O</button>
           </div>
           <h5 class="text-center">Coaches</h5>
         </div>
@@ -154,10 +154,13 @@
             />
             <label class="m-1" for="vereniging">Vereniging</label>
             <input class="m-1" type="text" id="vereniging" required />
-            <button class="ok btn">O</button>
+            <button class="ok btn btn-primary">O</button>
           </div>
         </div>
       </form>
+      <div class="text-center my-2">
+        <button class="btn">verstuur</button>
+      </div>
     </div>
 
     <!-- Optional JavaScript -->

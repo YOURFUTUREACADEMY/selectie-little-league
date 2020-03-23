@@ -7,10 +7,10 @@ $(document).ready(function() {
   const plaats = "plaats";
   const geboortedatum = "geboortedatum";
   const vereniging = "vereniging";
-  const coach = "coach";
-  let teamRij = 1;
-  let coachRij = 1;
-  let form =
+
+  const color = "lightgrey";
+
+  const form =
     '<div class="form-group">' +
     '<div class="d-flex flex-column flex-lg-row rij">' +
     '<label class="m-1" for="temp">Voornaam</label>' +
@@ -35,195 +35,125 @@ $(document).ready(function() {
     "</div>" +
     "</div>";
 
+  let teamRij = 1;
+  let coachRij = 1;
+
   // event handlers
   $("form").on("submit", false);
-  $(".ok").on("click", teamAdd);
-  $(document.body).on("click", ".delete", removeTeam);
-  $(".coachok").on("click", coachAdd);
-  $(document.body).on("click", ".coachDel", removeCoach);
+  $(".coachok, .ok").on("click", function(e) {
+    let className = this.className;
+    addRow(className);
+  });
 
-  // voeg een nieuwe rij teamvelden toe
-  function teamAdd() {
-    if (teamRij === 15) {
-      alert("Er mogen maximaal 15 teamleden worden toegevoegd");
-    } else {
-      $('[name="team"]').append(form);
-      if (teamRij % 2 > 0) {
-        $('div[class="d-flex flex-column flex-lg-row rij"]')
-          .attr("class", `d-flex flex-column flex-lg-row rij${teamRij}`)
-          .css("background-color", "lightgrey");
-        $('label[for="temp"]')
-          .attr("for", naam + teamRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp"]')
-          .attr("id", naam + teamRij)
-          .css("background-color", "lightgrey");
-        $('label[for="temp1"]')
-          .attr("for", achternaam + teamRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp1"]')
-          .attr("id", achternaam + teamRij)
-          .css("background-color", "lightgrey");
-        $('label[for="temp2"]')
-          .attr("for", adres + teamRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp2"]')
-          .attr("id", adres + teamRij)
-          .css("background-color", "lightgrey");
-        $('label[for="temp3"]')
-          .attr("for", postcode + teamRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp3"]')
-          .attr("id", postcode + teamRij)
-          .css("background-color", "lightgrey");
-        $('label[for="temp4"]')
-          .attr("for", email + teamRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp4"]')
-          .attr("id", email + teamRij)
-          .css("background-color", "lightgrey");
-        $('label[for="temp5"]')
-          .attr("for", plaats + teamRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp5"]')
-          .attr("id", plaats + teamRij)
-          .css("background-color", "lightgrey");
-        $('label[for="temp6"]')
-          .attr("for", geboortedatum + teamRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp6"]')
-          .attr("id", geboortedatum + teamRij)
-          .css("background-color", "lightgrey");
-        $('label[for="temp7"]')
-          .attr("for", vereniging + teamRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp7"]')
-          .attr("id", vereniging + teamRij)
-          .css("background-color", "lightgrey");
-        $('button[class="tempDel btn"]').attr("class", "delete btn");
-        teamRij++;
+  $(document.body).on("click", ".Del, .coachDel", function(e) {
+    let className = this.className;
+    removeRow(className);
+  });
+
+  // voeg een nieuwe rij velden aan.
+  function addRow(className) {
+    let counter = 0;
+    let coach = "";
+    let css = "";
+
+    if (className === "ok btn btn-primary") {
+      counter = teamRij;
+      coach = "";
+      if (counter === 15) {
+        alert("Er mogen maximaal 15 teamleden worden toegevoegd");
+        return;
       } else {
-        $('div[class="d-flex flex-column flex-lg-row rij"]').attr(
-          "class",
-          `d-flex flex-column flex-lg-row rij${teamRij}`
-        );
-        $('label[for="temp"]').attr("for", naam + teamRij);
-        $('input[id="temp"]').attr("id", naam + teamRij);
-        $('label[for="temp1"]').attr("for", achternaam + teamRij);
-        $('input[id="temp1"]').attr("id", achternaam + teamRij);
-        $('label[for="temp2"]').attr("for", adres + teamRij);
-        $('input[id="temp2"]').attr("id", adres + teamRij);
-        $('label[for="temp3"]').attr("for", postcode + teamRij);
-        $('input[id="temp3"]').attr("id", postcode + teamRij);
-        $('label[for="temp4"]').attr("for", email + teamRij);
-        $('input[id="temp4"]').attr("id", email + teamRij);
-        $('label[for="temp5"]').attr("for", plaats + teamRij);
-        $('input[id="temp5"]').attr("id", plaats + teamRij);
-        $('label[for="temp6"]').attr("for", geboortedatum + teamRij);
-        $('input[id="temp6"]').attr("id", geboortedatum + teamRij);
-        $('label[for="temp7"]').attr("for", vereniging + teamRij);
-        $('input[id="temp7"]').attr("id", vereniging + teamRij);
-        $('button[class="tempDel btn"]').attr("class", "delete btn");
-        teamRij++;
+        $('[name="team"]').append(form);
       }
+    } else {
+      counter = coachRij;
+      coach = "coach";
+      if (counter === 3) {
+        alert("Er mogen maximaal 3 coaches worden toegevoegd");
+        return;
+      } else {
+        $('[name="coach"]').append(form);
+      }
+    }
+    if (counter % 2 > 0) {
+      css = color;
+    } else {
+      css = "";
+    }
+
+    //hernoem elementen
+    $('div[class="d-flex flex-column flex-lg-row rij"]')
+      .attr("class", `d-flex flex-column flex-lg-row ${coach}rij${counter}`)
+      .css("background-color", css);
+    $('label[for="temp"]')
+      .attr("for", coach + naam + counter)
+      .css("background-color", css);
+    $('input[id="temp"]')
+      .attr("id", coach + naam + counter)
+      .css("background-color", css);
+    $('label[for="temp1"]')
+      .attr("for", coach + achternaam + counter)
+      .css("background-color", css);
+    $('input[id="temp1"]')
+      .attr("id", coach + achternaam + counter)
+      .css("background-color", css);
+    $('label[for="temp2"]')
+      .attr("for", coach + adres + counter)
+      .css("background-color", css);
+    $('input[id="temp2"]')
+      .attr("id", coach + adres + counter)
+      .css("background-color", css);
+    $('label[for="temp3"]')
+      .attr("for", coach + postcode + counter)
+      .css("background-color", css);
+    $('input[id="temp3"]')
+      .attr("id", coach + postcode + counter)
+      .css("background-color", css);
+    $('label[for="temp4"]')
+      .attr("for", coach + email + counter)
+      .css("background-color", css);
+    $('input[id="temp4"]')
+      .attr("id", coach + email + counter)
+      .css("background-color", css);
+    $('label[for="temp5"]')
+      .attr("for", coach + plaats + counter)
+      .css("background-color", css);
+    $('input[id="temp5"]')
+      .attr("id", coach + plaats + counter)
+      .css("background-color", css);
+    $('label[for="temp6"]')
+      .attr("for", coach + geboortedatum + counter)
+      .css("background-color", css);
+    $('input[id="temp6"]')
+      .attr("id", coach + geboortedatum + counter)
+      .css("background-color", css);
+    $('label[for="temp7"]')
+      .attr("for", coach + vereniging + counter)
+      .css("background-color", css);
+    $('input[id="temp7"]')
+      .attr("id", coach + vereniging + counter)
+      .css("background-color", css);
+    $('button[class="tempDel btn"]').attr(
+      "class",
+      coach + "Del btn btn-primary"
+    );
+
+    counter++;
+    if (className === "ok btn btn-primary") {
+      teamRij = counter;
+    } else {
+      coachRij = counter;
     }
   }
 
-  // voeg een nieuwe rij coach velden toe
-  function coachAdd() {
-    if (coachRij === 3) {
-      alert("Er mogen maximaal 3 coaches worden toegevoegd");
+  // verwijder onderste rij van team of coach velden.
+  function removeRow(className) {
+    if (className === "Del btn btn-primary") {
+      $(".rij" + (teamRij - 1)).remove();
+      teamRij--;
     } else {
-      $('[name="coach"]').append(form);
-      if (coachRij % 2 > 0) {
-        $('div[class="d-flex flex-column flex-lg-row rij"]')
-          .attr("class", `d-flex flex-column flex-lg-row coachrij${coachRij}`)
-          .css("background-color", "lightgrey");
-        $('label[for="temp"]')
-          .attr("for", coach + naam + coachRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp"]')
-          .attr("id", coach + naam + coachRij)
-          .css("background-color", "lightgrey");
-        $('label[for="temp1"]')
-          .attr("for", coach + achternaam + coachRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp1"]')
-          .attr("id", coach + achternaam + coachRij)
-          .css("background-color", "lightgrey");
-        $('label[for="temp2"]')
-          .attr("for", coach + adres + coachRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp2"]')
-          .attr("id", coach + adres + coachRij)
-          .css("background-color", "lightgrey");
-        $('label[for="temp3"]')
-          .attr("for", coach + postcode + coachRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp3"]')
-          .attr("id", coach + postcode + coachRij)
-          .css("background-color", "lightgrey");
-        $('label[for="temp4"]')
-          .attr("for", coach + email + coachRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp4"]')
-          .attr("id", coach + email + coachRij)
-          .css("background-color", "lightgrey");
-        $('label[for="temp5"]')
-          .attr("for", coach + plaats + coachRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp5"]')
-          .attr("id", coach + plaats + coachRij)
-          .css("background-color", "lightgrey");
-        $('label[for="temp6"]')
-          .attr("for", coach + geboortedatum + coachRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp6"]')
-          .attr("id", coach + geboortedatum + coachRij)
-          .css("background-color", "lightgrey");
-        $('label[for="temp7"]')
-          .attr("for", coach + vereniging + coachRij)
-          .css("background-color", "lightgrey");
-        $('input[id="temp7"]')
-          .attr("id", coach + vereniging + coachRij)
-          .css("background-color", "lightgrey");
-        $('button[class="tempDel btn"]').attr("class", "coachDel btn");
-        coachRij++;
-      } else {
-        $('div[class="d-flex flex-column flex-lg-row rij"]').attr(
-          "class",
-          `d-flex flex-column flex-lg-row coachrij${coachRij}`
-        );
-        $('label[for="temp"]').attr("for", coach + naam + coachRij);
-        $('input[id="temp"]').attr("id", coach + naam + coachRij);
-        $('label[for="temp1"]').attr("for", coach + achternaam + coachRij);
-        $('input[id="temp1"]').attr("id", coach + achternaam + coachRij);
-        $('label[for="temp2"]').attr("for", coach + adres + coachRij);
-        $('input[id="temp2"]').attr("id", coach + adres + coachRij);
-        $('label[for="temp3"]').attr("for", coach + postcode + coachRij);
-        $('input[id="temp3"]').attr("id", coach + postcode + coachRij);
-        $('label[for="temp4"]').attr("for", coach + email + coachRij);
-        $('input[id="temp4"]').attr("id", coach + email + coachRij);
-        $('label[for="temp5"]').attr("for", coach + plaats + coachRij);
-        $('input[id="temp5"]').attr("id", coach + plaats + coachRij);
-        $('label[for="temp6"]').attr("for", coach + geboortedatum + coachRij);
-        $('input[id="temp6"]').attr("id", coach + geboortedatum + coachRij);
-        $('label[for="temp7"]').attr("for", coach + vereniging + coachRij);
-        $('input[id="temp7"]').attr("id", coach + vereniging + coachRij);
-        $('button[class="tempDel btn"]').attr("class", "coachDel btn");
-        coachRij++;
-      }
+      $(".coachrij" + (coachRij - 1)).remove();
+      coachRij--;
     }
-  }
-
-  // verwijder onderste rij van teamvelden.
-  function removeTeam() {
-    $(".rij" + (teamRij - 1)).remove();
-    teamRij--;
-  }
-
-  function removeCoach() {
-    $(".coachrij" + (coachRij - 1)).remove();
-    coachRij--;
   }
 });
