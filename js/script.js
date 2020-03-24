@@ -34,6 +34,7 @@ $(document).ready(function() {
     '<label class="m-1" for="temp7">vereniging</label>' +
     '<input class="m-1" type="text" id="temp7" required />' +
     '<button class="tempDel btn">X</button>' +
+    '<button class="tempOk btn">O</button>' +
     "</div>" +
     "</div>";
 
@@ -51,31 +52,40 @@ $(document).ready(function() {
   $("#datum").val(locDatum);
 
   // event handlers
-  $("form").on("submit", false);
-  $(".coachok, .ok").on("click", function(e) {
+  $(document.body).on("click", ".coachOk, .teamOk", function(e) {
     let className = this.className;
-    addRow(className);
+    AddRow(className);
   });
 
   $(document.body).on("click", ".teamDel, .coachDel", function(e) {
     let className = this.className;
-    removeRow(className);
+    RemoveRow(className);
   });
 
-  // voeg een nieuwe rij velden aan.
-  function addRow(className) {
+  // formulieren verzenden
+  $(".verstuur").on("click", function() {
+    document.querySelector(".cordverstuur").click();
+    console.log("cord form");
+    document.querySelector(".coachverstuur").click();
+    console.log("coach form");
+    document.querySelector(".teamverstuur").click();
+    console.log("team form");
+  });
+
+  // voeg een nieuwe rij velden toe.
+  function AddRow(className) {
     let counter = 0;
     let type = "";
     let css = "";
 
-    if (className === "ok btn btn-primary") {
+    if (className === "teamOk btn btn-primary m-2") {
       counter = teamRij;
       type = "team";
       if (counter === 15) {
         alert("Er mogen maximaal 15 teamleden worden toegevoegd");
         return;
       } else {
-        $('[name="team"]').append(form);
+        $("#team").append(form);
       }
     } else {
       counter = coachRij;
@@ -84,7 +94,7 @@ $(document).ready(function() {
         alert("Er mogen maximaal 3 coaches worden toegevoegd");
         return;
       } else {
-        $('[name="coach"]').append(form);
+        $("#coach").append(form);
       }
     }
     if (counter % 2 > 0) {
@@ -147,11 +157,14 @@ $(document).ready(function() {
       .css("background-color", css);
     $('button[class="tempDel btn"]').attr(
       "class",
-      type + "Del btn btn-primary"
+      type + "Del btn btn-primary m-2"
     );
-
+    $('button[class="tempOk btn"]').attr(
+      "class",
+      type + "Ok btn btn-primary m-2"
+    );
     counter++;
-    if (className === "ok btn btn-primary") {
+    if (className === "teamOk btn btn-primary m-2") {
       teamRij = counter;
     } else {
       coachRij = counter;
@@ -159,8 +172,8 @@ $(document).ready(function() {
   }
 
   // verwijder onderste rij van team of coach velden.
-  function removeRow(className) {
-    if (className === "teamDel btn btn-primary") {
+  function RemoveRow(className) {
+    if (className === "teamDel btn btn-primary m-2") {
       $(".teamrij" + (teamRij - 1)).remove();
       teamRij--;
     } else {

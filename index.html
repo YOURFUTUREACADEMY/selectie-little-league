@@ -56,7 +56,8 @@
       <!--forms start-->
 
       <!--coordinator form-->
-      <form name="coordinator" class="border border-warning mb-1">
+      <form id="coordinator" class="border border-warning mb-1">
+        <button class="btn btn-primary cordverstuur" style="display: none;" method="POST" type="submit" formaction="mailto:mailto:friso@yourfutureacademy.nl" enctype="text/plain">verstuur</button>
         <div class="form-group">
           <h2 class="text-center">Coördinator informatie</h2>
           <div class="d-flex flex-column flex-lg-row">
@@ -109,10 +110,12 @@
             <label class="m-1" for="datum">datum</label>
             <input class="m-1" id="datum" required />
           </div>
+          
         </div>
       </form>
       <!--coach form-->
-      <form name="coach" class="border border-primary mb-1"> 
+      <form id="coach" class="border border-primary mb-1"> 
+        <button class="btn btn-primary coachverstuur" style="display: none;" method="POST" type="submit" formaction="mailto:mailto:friso@yourfutureacademy.nl" enctype="text/plain">verstuur</button>
         <div class="form-group">
           <h2 class="text-center">coach selectie</h2>
           <h5 class="text-center">Hoofdcoach</h5>
@@ -159,14 +162,15 @@
             />
             <label class="m-1" for="coachvereniging">Vereniging</label>
             <input class="m-1" type="text" id="coachvereniging" required />
-            <button class="coachok btn btn-primary">O</button>
+            <button class="coachOk btn btn-primary m-2">O</button>
           </div>
           <h5 class="text-center">Coaches</h5>
         </div>
       </form>
 
       <!--team form-->
-      <form name="team" class="border border-danger>
+      <form id="team" class="border border-danger">
+        <button class="btn btn-primary teamverstuur" style="display: none;" method="POST" type="submit" formaction="mailto:mailto:friso@yourfutureacademy.nl" enctype="text/plain">verstuur</button>
         <div class="form-group">
           <h2 class="text-center">team selectie</h2>
           <div class="d-flex flex-column flex-lg-row">
@@ -212,13 +216,13 @@
             />
             <label class="m-1" for="teamvereniging">Vereniging</label>
             <input class="m-1" type="text" id="teamvereniging" required />
-            <button class="ok btn btn-primary">O</button>
+            <button class="teamOk btn btn-primary m-2">O</button>
           </div>
           </div>
         </div>
       </form>
       <div class="text-center my-2">
-        <button class="btn btn-primary" type="submit" formmethod="POST" formaction="mailto:mailto:friso@yourfutureacademy.nl">verstuur</button>
+        <button class="btn btn-primary verstuur">verstuur</button>
       </div>
     </div>
 
