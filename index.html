@@ -63,7 +63,22 @@
           <div class="d-flex flex-column flex-lg-row">
             <label class="m-1" for="teamNaam">Team naam</label>
             <input class="m-1" id="teamNaam" type="text" required />
-            <label class="m-1" for="cluster">Cluster</label>
+            <label class="m-1" for="cluster">Cluster</label> 
+            <select class="m-1" id="cluster" name="regio" required="">
+                <option value="">Kies een regio</option>
+                <option value="Amsterdam">Amsterdam</option>
+                <option value="Brabant / Zeeland">Brabant / Zeeland</option>
+                <option value="Den Haag">Den Haag</option>
+                <option value="Haarlem">Haarlem</option>
+                <option value="Midden">Midden</option>
+                <option value="Noord">Noord</option>
+                <option value="Noord Holland">Noord Holland</option>
+                <option value="Oost">Oost</option>
+                <option value="Rotterdam">Rotterdam</option>
+                <option value="Zuid">Zuid</option>
+            </select>
+            
+            
             <input class="m-1" id="cluster" type="text" required />
             <label class="m-1" for="teamCoordinator">Teamcoördinator</label>
             <input class="m-1" id="teamCoordinator" type="text" required />
