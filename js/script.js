@@ -14,25 +14,25 @@ $(document).ready(function() {
     '<div class="form-group">' +
     '<div class="d-flex flex-column flex-lg-row rij">' +
     '<label class="m-1" for="temp">Voornaam</label>' +
-    '<input class="m-1" type="text" id="temp" required/>' +
+    '<input class="m-1" type="text" name="temp" required/>' +
     '<label class="m-1" for="temp1">Achternaam</label>' +
-    '<input class="m-1" type="text" id="temp1" required/>' +
+    '<input class="m-1" type="text" name="temp1" required/>' +
     '<label class="m-1" for="temp2">Adres</label>' +
-    '<input class="m-1" type="text" id="temp2" placeholder="straat 1" required />' +
+    '<input class="m-1" type="text" name="temp2" placeholder="straat 1" required />' +
     "</div>" +
     '<div class="d-flex flex-column flex-lg-row rij">' +
     '<label class="m-1" for="temp3">Postcode</label>' +
-    '<input class="m-1" type="text" id="temp3" maxlength="6" minlength="6" width="1rem" required/>' +
+    '<input class="m-1" type="text" name="temp3" maxlength="6" minlength="6" width="1rem" required/>' +
     '<label class="m-1" for="temp4">Email</label>' +
-    '<input class="m-1" type="email" id="temp4" required />' +
+    '<input class="m-1" type="email" name="temp4" required />' +
     '<label class="m-1" for="temp5">Plaats</label>' +
-    '<input class="m-1" type="text" id="temp5" required />' +
+    '<input class="m-1" type="text" name="temp5" required />' +
     "</div>" +
     '<div class="d-flex flex-column flex-lg-row rij">' +
     '<label class="m-1" for="temp6">geboortedatum</label>' +
-    '<input class="m-1" type="date" id="temp6" required />' +
+    '<input class="m-1" type="date" name="temp6" required />' +
     '<label class="m-1" for="temp7">vereniging</label>' +
-    '<input class="m-1" type="text" id="temp7" required />' +
+    '<input class="m-1" type="text" name="temp7" required />' +
     '<button class="tempDel btn">X</button>' +
     '<button class="tempOk btn">O</button>' +
     "</div>" +
@@ -110,50 +110,50 @@ $(document).ready(function() {
     $('label[for="temp"]')
       .attr("for", type + naam + counter)
       .css("background-color", css);
-    $('input[id="temp"]')
-      .attr("id", type + naam + counter)
+    $('input[name="temp"]')
+      .attr("name", type + naam + counter)
       .css("background-color", css);
     $('label[for="temp1"]')
       .attr("for", type + achternaam + counter)
       .css("background-color", css);
-    $('input[id="temp1"]')
-      .attr("id", type + achternaam + counter)
+    $('input[name="temp1"]')
+      .attr("name", type + achternaam + counter)
       .css("background-color", css);
     $('label[for="temp2"]')
       .attr("for", type + adres + counter)
       .css("background-color", css);
-    $('input[id="temp2"]')
-      .attr("id", type + adres + counter)
+    $('input[name="temp2"]')
+      .attr("name", type + adres + counter)
       .css("background-color", css);
     $('label[for="temp3"]')
       .attr("for", type + postcode + counter)
       .css("background-color", css);
-    $('input[id="temp3"]')
-      .attr("id", type + postcode + counter)
+    $('input[name="temp3"]')
+      .attr("name", type + postcode + counter)
       .css("background-color", css);
     $('label[for="temp4"]')
       .attr("for", type + email + counter)
       .css("background-color", css);
-    $('input[id="temp4"]')
-      .attr("id", type + email + counter)
+    $('input[name="temp4"]')
+      .attr("name", type + email + counter)
       .css("background-color", css);
     $('label[for="temp5"]')
       .attr("for", type + plaats + counter)
       .css("background-color", css);
-    $('input[id="temp5"]')
-      .attr("id", type + plaats + counter)
+    $('input[name="temp5"]')
+      .attr("name", type + plaats + counter)
       .css("background-color", css);
     $('label[for="temp6"]')
       .attr("for", type + geboortedatum + counter)
       .css("background-color", css);
-    $('input[id="temp6"]')
-      .attr("id", type + geboortedatum + counter)
+    $('input[name="temp6"]')
+      .attr("name", type + geboortedatum + counter)
       .css("background-color", css);
     $('label[for="temp7"]')
       .attr("for", type + vereniging + counter)
       .css("background-color", css);
-    $('input[id="temp7"]')
-      .attr("id", type + vereniging + counter)
+    $('input[name="temp7"]')
+      .attr("name", type + vereniging + counter)
       .css("background-color", css);
     $('button[class="tempDel btn"]').attr(
       "class",
